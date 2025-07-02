@@ -1,5 +1,6 @@
 package com.example.onlineshop.Activity
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,9 +32,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import coil.compose.AsyncImage
 import com.example.onlineshop.Model.ItemsModel
 import com.example.onlineshop.R
+
 
 
 @Composable
@@ -53,7 +56,11 @@ fun PopularItem (items: List<ItemsModel>, pos: Int) {
                 .background(colorResource(R.color.lightBrown), shape = RoundedCornerShape(10.dp))
                 .height(195.dp)
                 .clickable {
-
+                    val intent = Intent(context, DetailActivity::class.java).apply {
+                        putExtra("object", items[pos])
+                    }
+                    //context.startActivity(intent)
+                     startActivity(context, intent, null)
                 }, contentScale = ContentScale.Crop
         )
         Text(
