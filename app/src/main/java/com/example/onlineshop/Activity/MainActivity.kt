@@ -66,9 +66,9 @@ class MainActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainActivityScreen(
-                onCartClick = {}
-            )
+            MainActivityScreen {
+                startActivity(Intent(this, CartActivity::class.java))
+            }
         }
     }
 }
